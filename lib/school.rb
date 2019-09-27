@@ -1,5 +1,7 @@
-# code here!
 class School
+attr_accessor :roster
+#attr_reader IS STATIC, READ-ONLY
+#attr_writer IS WRITABLE
 
   def initialize(name)
   @school = name
@@ -7,27 +9,26 @@ class School
   end
  
   def add_student(name, grade)
+  if roster[grade]
+  roster[grade] << name
+  else
   roster[grade] = []
   roster[grade] << name
-  roster
+  #roster[grade].flatten
   end
-
-  def roster=(add_student)
-    @roster = add_student
   end
   
-  def roster
-    @roster
-  end
-
   def grade(num)
-if num == roster[:grade]
-roster[:name]
+roster[num]
+if roster[num] == nil
+puts "grade doesn't exist"
 end
   end
 
   def sort
-roster.sort
+roster.each do |grade, name|
+roster[grade] = name.flatten.sort
+end
   end
 
 end
@@ -35,4 +36,6 @@ end
 school = School.new("Bayside High School")
 school.add_student("AC Slater", 9)
 school.add_student("Kelly Kapowski", 10)
-school.add_student("Screech", 11)
+school.add_student(["Screech", "Hello"], 11)
+school.grade(8)
+school.sort
