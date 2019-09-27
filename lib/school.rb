@@ -20,9 +20,6 @@ attr_accessor :roster
   
   def grade(num)
 roster[num]
-if roster[num] == nil
-puts "grade doesn't exist"
-end
   end
 
   def sort
@@ -36,7 +33,7 @@ end
 school = School.new("Bayside High School")
 school.add_student("AC Slater", 9)
 school.add_student("Kelly Kapowski", 10)
-school.add_student(["Avi Flombaum", "Jeff Baird"], 10)
 school.add_student(["Screech", "Hello"], 11)
-school.grade(8)
+school.add_student(["Avi Flombaum", "Jeff Baird"], 10)
+school.grade(10)
 school.sort
